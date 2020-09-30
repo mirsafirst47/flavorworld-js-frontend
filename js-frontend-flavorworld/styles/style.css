@@ -1,4 +1,75 @@
-body {
+#dish-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-left: 40px;
+    grid-row-gap: 30px;
+    box-shadow: 10px 10px 10px;
+}
+
+.all-dishes {
+    padding: 50px 50px 50px 50px;
+    text-align: center;
+}
+
+.carousel-caption {
+    background-color: black;
+    height: 120px;
+    opacity: 0.8;
+    color: white;
+    bottom: 10%;
+    font-weight: 100;
+    letter-spacing: 1px;
+}
+
+h1 {
+    font-weight: 200;
+    opacity: 1;
+    letter-spacing: 1px;
+}
+
+#new-dish-form {
+    margin: 30px auto;
+    width: 30%;
+}
+
+.card-buttons-container {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* body {
     margin: 0;
     font-family: monospace;
 }
@@ -38,9 +109,7 @@ button {
 }
 
 button:hover {
-    /* background-color: rgb(245, 245, 245);
-    border: #e04b52 solid 1px;
-    color: #e04b52; */
+  
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
@@ -56,4 +125,4 @@ button:hover {
 *{
     margin: 0;
     padding: 0,
-}*/
+} */ 
