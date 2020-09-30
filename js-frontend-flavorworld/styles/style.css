@@ -1,0 +1,135 @@
+body {
+    margin: 0;
+    font-family: monospace;
+}
+
+#dish-collection {
+    margin: 6rem;
+}
+
+.card {
+    text-align: center;
+    border: grey solid 1px;
+    border-radius: 8px;
+    padding: 2rem;
+    width: 15rem;
+    height: 30rem;
+    display: inline-grid;
+    margin: 1rem 2rem;
+    box-shadow: 3px 4px #8a8787
+}
+
+.dish-avatar {
+    justify-self: center;
+    height: 10rem;
+    width: auto;
+}
+
+button {
+    position: relative;
+    background-color: #6be0b9;
+    border: none;
+    border-radius: 8px;
+    height: 3rem;
+    width: max-content;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    justify-self: center;
+}
+
+button:hover {
+    /* background-color: rgb(245, 245, 245);
+    border: #e04b52 solid 1px;
+    color: #e04b52; */
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.container {
+    padding: 1rem;
+    width: stretch;
+    height: auto;
+    display: none;
+    background: #515DA2;
+    opacity: .8;
+}
+
+*{
+    margin: 0;
+    padding: 0,
+}*/
+/* /////////////////////////////////////////////////// */
+/* *{
+    margin: 0;
+    padding: 0,
+} */
+/* header{
+    height: 10vh;
+    background-size: cover;
+    background-position: center;
+    background-color:black;
+}
+.nav{
+    float: right;
+    list-style: none;
+    margin-top: 30px;
+    color: white
+}
+.nav-item li{
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 5px 20px;
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+}
+.nav-link{
+    color: white;
+}
+.nav-item li:hover{
+    border: 1px solid white;
+}
+body{
+    font-family: monospace;
+}
+.hero{
+
+    background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("https://media.giphy.com/media/Vw3k4Vro0Q5KE/giphy.gif");
+    background-repeat: none;
+    height: 90vh;
+    background-size: cover;
+    margin-left: 0px;
+
+}
+.h2{
+    color: white;
+    font-family: fantasy;
+    text-transform: uppercase;
+    font-size: 50px;
+    text-align: middle;
+    margin-right: 200px;
+
+}
+#collection {
+    margin: 2rem;
+  }
+
+.movieimage{
+    justify-self: center;
+    width: auto;
+  }
+
+.card{
+    text-align: center;
+    border: grey solid 1px;
+    padding: 1rem;
+    width: 15rem;
+    display: inline-grid;
+    margin: 1rem 2rem;
+
+}
+h5{
+    font-family: 'Caveat', cursive;
+}
+#show-panel{
+    text-align: center;
+} */ */
