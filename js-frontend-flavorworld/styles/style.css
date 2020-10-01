@@ -3,7 +3,6 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     margin-left: 40px;
     grid-row-gap: 30px;
-    box-shadow: 10px 10px 10px;
 }
 
 .all-dishes {
@@ -38,6 +37,20 @@ h1 {
     left: 30px;
 }
 
+.card-body{
+    box-shadow: 5px 10px 30px rgb(215, 215, 215);
+}
+
+.card:hover {
+    transform: scale(1.1);
+    box-shadow: 5px 5px 15px rgba(215, 215, 215);
+}
+.card {
+    ...
+      transition: .5s ease;
+      cursor: pointer;
+      margin:30px;
+}
 
 
 
