@@ -1,6 +1,7 @@
-const userURL = "http://localhost:3000/users"
+const usersURL = "http://localhost:3000/users"
 
 document.addEventListener("DOMContentLoaded", (e) => {
+
 
     handleNewDishUsers();
     newUserForm();
@@ -8,12 +9,9 @@ document.addEventListener("DOMContentLoaded", (e) => {
     const newUserButton = document.getElementById("new-user-button");
 
     newUserButton.addEventListener("click", () => {
-        const newCommentForm = document.getElementById("new-comment-form");
+
         const newDishForm = document.getElementById("new-dish-form");
 
-        if (newCommentForm.classList.contains("show")) {
-            newCommentForm.classList.remove("show");
-        }
         if (newDishForm.classList.contains("show")) {
             newDishForm.classList.remove("show");
         }
@@ -34,11 +32,10 @@ function newUserForm() {
 function addNewUser(event) {
 
     const data = {
-        username: event.target.value,
-        
+        username: event.target[0].value,
     }
 
-    fetch(userURL, {
+    fetch(usersURL, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
@@ -53,7 +50,7 @@ function handleNewDishUsers() {
     const newUserInput = document.getElementById("new-dish-user-input")
     newUserInput.innerHTML = ""
 
-    fetch(userURL)
+    fetch(usersURL)
     .then(res => res.json())
     .then(users => users.forEach(user => {
         addUser(user)

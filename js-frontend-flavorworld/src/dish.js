@@ -1,8 +1,9 @@
-const dishURL = "http://localhost:3000/dishes"
+
+const dishesURL = "http://localhost:3000/dishes"
 
 document.addEventListener("DOMContentLoaded", (e) => {
     
-    renderDishes();
+    loadDishes();
     handleOtherForms();
     submitForm();
 
@@ -12,7 +13,7 @@ function handleOtherForms() {
     const newDishButton = document.getElementById("new-dish-button");
 
     newDishButton.addEventListener("click", () => {
-        const newUserForm = document.getElementById("new-User-form");
+        const newUserForm = document.getElementById("new-user-form");
         const newCommentForm = document.getElementById("new-comment-form");
 
         if (newUserForm.classList.contains("show")) {
@@ -37,14 +38,14 @@ function submitForm() {
 
 function addNewDish(event) {
     const data = {
-        origin: event.target[0].value,
-        name: event.target[1].value,
-        description: event.target[2].value,
+        user_id: event.target[0].value,
+        comment_id: event.target[1].value,
+        content: event.target[2].value,
         image_url: event.target[3].value,
         likes: 0
     }
 
-    fetch(dishURL, {
+    fetch(dishesURL, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
@@ -55,17 +56,16 @@ function addNewDish(event) {
     .then(res => res.json())
     .then(json => {
         renderDish(json)
-        console.log(event)
     })
     
 }
 
 
-function renderDishes() {
+function loadDishes() {
     const dishContainer = document.getElementById("dish-container")
     dishContainer.innerHTML = ""
 
-    fetch(dishURL)
+    fetch(dishesURL)
     .then(res => res.json())
     .then(dishes => dishes.forEach(dish => {
         renderDish(dish);
@@ -93,7 +93,7 @@ function renderDish(dish) {
                     <button type="button" id="likes-button-${dish.id}" class="btn btn-primary">Likes</button>
                     <button type="button" class="btn btn-success" id="picnic-button-${dish.id}">Picnic</button>
                     <button type="button" id="edit-button-${dish.id}" class="btn btn-secondary" data-toggle="modal" data-target="#modal-edit-button">Edit</button>
-                    <button type="button" id="delete-button-${dish.id}" class="btn btn-dark">Delete</button>
+                    <button type="button" id="delete-button-${dish.id}" class="btn btn-danger">Delete</button>
                 </div>
             </div>
         </div>
@@ -103,13 +103,13 @@ function renderDish(dish) {
 
     addLikesButton(dish)
     addDeleteButton(dish, dishCard)
-    addPicnicButton(dish)
+    addPicnicListButton(dish)
     editDishForm(dish)
 };
 
-function addPicnicButton(dish) {
-    const picnicButton = document.getElementById(`picnic-button-${dish.id}`)
-    const picnicCardsContainer = document.getElementById("picnic-list-cards-container")
+function addPicnicListButton(dish) {
+    const picnicListButton = document.getElementById(`picnic-button-${dish.id}`)
+    const picnicListCardsContainer = document.getElementById("picnic-list-cards-container")
     
     const newPicnicItem = document.createElement("div")
     newPicnicItem.className = "card"
@@ -118,21 +118,21 @@ function addPicnicButton(dish) {
         <img src="${dish.image_url}" class="card-img-top" alt="${dish.name}">
         <div class="card-body">
             <h5 class="card-title">${dish.name}</h5>
-            <h6 class="card-subtitle mb-2 text-muted"> Origin: ${dish.origin}</h6>
+            <h6 class="card-subtitle mb-2 text-muted"> By: ${dish.origin}</h6>
             <p class="card-text" style="font-size: 12px; letter-spacing: 1px;">${dish.description}</p>
             <button type="button" id="remove-button-${dish.id}" class="btn btn-danger">Remove</button>
         </div>
     `
 
-    picnicButton.addEventListener("click", (e) => {
-        const picnicCounter = document.getElementById("picnic-counter")
-        picnicCounter.innerText = (parseInt(picnicCounter.innerText) + 1).toString();
-        picnicCardsContainer.appendChild(newPicnicItem)
+    picnicListButton.addEventListener("click", (e) => {
+        const picnicListCounter = document.getElementById("picnic-counter")
+        picnicListCounter.innerText = (parseInt(picnicListCounter.innerText) + 1).toString();
+        picnicListCardsContainer.appendChild(newPicnicItem)
 
         const removeButton = document.getElementById(`remove-button-${dish.id}`)
         removeButton.addEventListener("click", (e) => {
             newPicnicItem.remove();
-            picnicCounter.innerText = (parseInt(picnicCounter.innerText) - 1).toString();
+            picnicListCounter.innerText = (parseInt(picnicListCounter.innerText) - 1).toString();
         })
     })
 }
@@ -150,11 +150,10 @@ function addDeleteButton(dish, dishCard) {
 function addLikesButton(dish) {
     const likesButton = document.getElementById(`likes-button-${dish.id}`)
     likesButton.addEventListener("click", (e) => {
-        const likesCount = document.getElementById(`likes-count-${dish.id}`)
-        const newLikesCount = (parseInt(likesCount.innerText) + 1).toString();
+        const likeCount = document.getElementById(`likes-count-${dish.id}`)
+        const newLikeCount = (parseInt(likeCount.innerText) + 1).toString();
         const likes = document.getElementById(`likes-count-label-${dish.id}`)
-        likesCount.innerText = newLikeCount
-
+        likeCount.innerText = newLikeCount
 
         fetch(`http://localhost:3000/dishes/${dish.id}`, {
             method: "PATCH",
@@ -163,7 +162,7 @@ function addLikesButton(dish) {
                 Accept: 'application/json'
             },
             body: JSON.stringify({
-                likes: newLikesCount
+                likes: newLikeCount
             })
         });
     });
@@ -178,12 +177,12 @@ function editDishForm(dish) {
         modalBody.innerHTML = `
             <form id="edit-dish-form">
                 <div class="form-group">
-                    <label for="edit-dish-description-input">description</label>
-                    <textarea type="text" class="form-control" id="edit-dish-description-input">${dish.description}</textarea>
+                    <label for="edit-dish-content-input">Content</label>
+                    <textarea type="text" class="form-control" id="edit-dish-content-input">${dish.description}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="edit-dish-image-input">Image URL</label>
-                    <input type="text" class="form-control" id="edit-dish-image-input" value="${dish.image}">
+                    <input type="text" class="form-control" id="edit-dish-image-input" value="${dish.image_url}">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -200,7 +199,7 @@ function editDishForm(dish) {
             confirmation.className = "alert alert-success"
             confirmation.style.cssText = "float: right; margin-right: 20px; width: 425px; text-align: center;"
 
-            confirmation.innerText = "Updated!"
+            confirmation.innerText = "Your changes have been updated!"
 
             editForm.append(confirmation)
         })
@@ -215,7 +214,7 @@ function addEditChanges(event, dish) {
 
     const data = {
         description: event.target[0].value,
-        image: event.target[1].value
+        image_url: event.target[1].value
     }
 
     fetch(`http://localhost:3000/dishes/${dish.id}`, {

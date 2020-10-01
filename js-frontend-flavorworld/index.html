@@ -10,7 +10,7 @@
     <script src="src/dish.js"></script>
     <script src="src/user.js"></script>
     <script src="src/comment.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
 
     <title>FlavorWorld</title>
   </head>
@@ -34,16 +34,16 @@
           </div>
         </div>
         <div class="carousel-item">
-          <img src="https://res.cloudinary.com/dn1e07eul/image/upload/v1601489139/FlavorWorld/banner-5_znmxh2.jpg" style ="height: 85vh" class="d-block w-100" alt="...">
+          <img src="https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" style ="height: 85vh" class="d-block w-100" alt="...">
           <div class="carousel-caption d-none d-md-block">
-            <h1></h1>
-            <p></p>
+            <h1>Share Your Experience</h1>
+            <p> Picture Or No One Will Believe...</p>
           </div>
         </div>
         <div class="carousel-item">
           <img src="https://res.cloudinary.com/dn1e07eul/image/upload/v1601489175/FlavorWorld/banner-7_xzz51j.jpg" style ="height: 85vh;" class="d-block w-100" alt="...">
           <div class="carousel-caption d-none d-md-block">
-            <h1></h1>
+            <h1>Flavors From Around The Globe</h1>
             <p></p>
           </div>
         </div>
@@ -67,9 +67,6 @@
       <li class="nav-item" id="new-user-button">
         <a class="nav-link btn btn-primary" data-toggle="collapse" href="#new-user-form" role="button" aria-expanded="false" aria-controls="new-user-form"  style="margin: 10px;" >New User</a>
       </li>
-      <li class="nav-item" id="new-comment-button">
-        <a class="nav-link btn btn-primary" data-toggle="collapse" href="#new-comment-form" role="button" aria-expanded="false" aria-controls="new-comment-form"  style="margin: 10px;" >Write Comment</a>
-      </li>
       <li class="nav-item" id="picnic-button">
         <a class="nav-link btn btn-success" type="button" href="#picnic-modal" data-toggle="modal" data-target="#picnic-modal" style="margin: 10px;">Let's Picnic! <span class="badge badge-light" id="picnic-counter">0</span></a>
         </li>
@@ -77,16 +74,16 @@
 
     <!-- Picnic Modal -->
 
-    <div class="modal fade" id="picnic-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="picnic-modal-label" aria-hidden="true">
+    <div class="modal fade" id="picnic-list-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="picnic-list-modal-label" aria-hidden="true">
       <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="picnic-modal-label">Picnic</h5>
+            <h5 class="modal-title" id="picnic-list-modal-label">Picnic List</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body" id="picnic-cards-container" style="text-align: center; background-color: rgb(219, 219, 219);">
+          <div class="modal-body" id="picnic-list-cards-container" style="text-align: center; background-color: rgb(219, 219, 219);">
             
           </div>
           <div class="modal-footer">
@@ -97,65 +94,38 @@
     </div>
 
     <!-- New Dish Form -->
-
     <form id="new-dish-form" class="collapse">
       <div class="form-group">
-          <label for="new-dish-user-input">Select User</label>
+          <label for="new-dish-user-input">Select user</label>
           <select class="form-control" id="new-dish-user-input">
             
           </select>
       </div>
       <div class="form-group">
-          <label for="new-dish-origin-input">Select Origin</label>
-          <select class="form-control" id="new-dish-origin-input">
-
-          </select>
-    </div>
-    <div class="form-group">
-        <label for="new-dish-name-input">Name</label>
-        <select class="form-control" id="new-dish-name-input">
+          <label for="new-dish-name-input">Dish name</label>
+          <textarea type="text" class="form-control" id="new-dish-name-input" placeholder="Enter a name..."></textarea>
             
           </select>
       </div>
       <div class="form-group">
         <label for="new-dish-description-input">Description</label>
-        <textarea type="text" class="form-control" id="new-dish-description-input" placeholder="Describe your dish!"></textarea>
+        <textarea type="text" class="form-control" id="new-dish-description-input" placeholder="Describe the dish..."></textarea>
       </div>
       <div class="form-group">
           <label for="new-dish-image-input">Image URL</label>
           <input type="text" class="form-control" id="new-dish-image-input">
       </div>
-      <button type="submit" class="btn btn-primary" data-toggle="popover" title="New Dish Submitted!" data-placement="right" data-trigger="focus" data-content="Check out your new dish below!">Submit</button>
+      <button type="submit" class="btn btn-info" data-toggle="popover" title="New Dish Submitted!" data-placement="right" data-trigger="focus" data-content="Scroll down to the bottom of the page to see your new post">Submit</button>
     </form>
-    
+
     <!-- New User -->
 
     <form id="new-user-form" class="collapse">
       <div class="form-group">
-          <label for="user-name-input">Your Username</label>
-          <input class="form-control" id="user-name-input"></input>
+          <label for="user-username-input">Your Username</label>
+          <input class="form-control" id="user-username-input"></input>
       </div>
-      <button type="submit" class="btn btn-primary" data-toggle="popover" title="New User Added!" data-placement="right" data-trigger="focus" data-content="Select your username to create a new dish!">Submit</button>
-    </form>
-
-    <!-- New Comment -->
-
-    <form id="new-comment-form" class="collapse">
-      <div class="form-group">
-          <label for="comment-name-input">Comment</label>
-          <input class="form-control" id="comment-name-input"></input>
-      </div>
-      <div class="form-group">
-        <label for="comment-input">Thoughts on this Dish?</label>
-        <select type="text" class="form-control" id="comment-scale-input">
-            <option value="No Thank you!">1</option> 
-            <option value="Meh">2</option> 
-            <option value="I like it.">3</option> 
-            <option value="I love it!">4</option> 
-            <option value="I cannot live without it!">5</option> 
-        </select>
-      </div>
-      <button type="submit" class="btn btn-primary" data-toggle="popover" title="New Comment Added!" data-placement="right" data-trigger="focus" data-content="Select your preference when creating a new dish!">Submit</button>
+      <button type="submit" class="btn btn-primary" data-toggle="popover" title="New User Added!" data-placement="right" data-trigger="focus" data-content="Select your username to add a new dish!">Submit</button>
     </form>
 
     <!-- EDIT FORM MODAL -->
@@ -176,7 +146,6 @@
       </div>
     </div>
     
-
     <!-- Dish Container -->
 
     <div class="all-dishes">
@@ -185,7 +154,6 @@
       </div>
     </div>
 
-    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
